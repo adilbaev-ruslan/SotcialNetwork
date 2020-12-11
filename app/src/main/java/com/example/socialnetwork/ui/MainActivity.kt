@@ -3,9 +3,12 @@ package com.example.socialnetwork.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.example.socialnetwork.R
+import com.example.socialnetwork.ui.profile.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,5 +33,21 @@ class MainActivity : AppCompatActivity() {
                         }
                 }
             }
+
+            bnav.setOnNavigationItemSelectedListener {
+                when(it.itemId) {
+                    R.id.itemProfil -> {
+                        val fragment = ProfileFragment()
+                        changeFragment(fragment, R.id.fragmentContext)
+                        return@setOnNavigationItemSelectedListener true
+                    }
+                    else -> return@setOnNavigationItemSelectedListener false
+                }
+            }
+
+    }
+
+    private fun changeFragment(fragment: Fragment, contener: Int) {
+        supportFragmentManager.beginTransaction().replace(contener, fragment).commit()
     }
 }
