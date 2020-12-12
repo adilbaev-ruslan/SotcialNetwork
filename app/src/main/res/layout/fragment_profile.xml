@@ -71,4 +71,15 @@
         android:layout_marginTop="16dp"
         android:textSize="18sp"/>
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:indeterminateTint="@android:color/primary_text_dark"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
