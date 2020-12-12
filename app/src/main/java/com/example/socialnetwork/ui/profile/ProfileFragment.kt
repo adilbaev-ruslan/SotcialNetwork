@@ -19,6 +19,7 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
         showData()
 
         saveButton.setOnClickListener {
+            showLoading(true)
             val map: MutableMap<String, Any> = mutableMapOf()
             map["username"] = etUserName.text.toString()
             map["email"] = etEmail.text.toString()
@@ -27,21 +28,34 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             db.collection("users").document(mAuth.currentUser!!.uid).set(map)
                     .addOnSuccessListener {
                         Toast.makeText(requireContext(), "Your profile data has been changed successfully", Toast.LENGTH_LONG).show()
+                        showLoading(false)
                     }
                     .addOnFailureListener { e ->
                         Toast.makeText(requireContext(), e.localizedMessage.toString(), Toast.LENGTH_LONG).show()
+                        showLoading(false)
                     }
         }
 
     }
 
     private fun showData() {
+        showLoading(true)
         db.collection("users").document(mAuth.currentUser!!.uid).get()
                 .addOnSuccessListener {
                     etUserName.setText(it.get("username").toString())
                     etEmail.setText(it.get("email").toString())
                     etPhone.setText(it.get("phone").toString())
                     etInfo.setText(it.get("info").toString())
+                    showLoading(false)
                 }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        loading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        etUserName.isEnabled = !isLoading
+        etEmail.isEnabled = !isLoading
+        etPhone.isEnabled = !isLoading
+        etInfo.isEnabled = !isLoading
+        saveButton.isEnabled = !isLoading
     }
 }
