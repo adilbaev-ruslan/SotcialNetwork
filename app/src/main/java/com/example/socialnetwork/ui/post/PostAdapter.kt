@@ -19,7 +19,16 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
             itemView.tvTheme.text = model.theme
             itemView.tvUsername.text = model.username
             itemView.tvText.text = model.text
+            itemView.ivComments.setOnClickListener {
+                onCommentClicked.invoke(model)
+            }
         }
+    }
+
+    private var onCommentClicked: (model: Post) -> Unit  = {}
+
+    fun setOnCommentClickListener(onCommentClicked: (model: Post) -> Unit) {
+        this.onCommentClicked = onCommentClicked
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {

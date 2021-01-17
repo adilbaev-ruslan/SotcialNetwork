@@ -16,6 +16,8 @@ class AddPostFragment: Fragment(R.layout.fragment_post_add) {
     private val mAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
+    var username = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showData()
@@ -25,7 +27,7 @@ class AddPostFragment: Fragment(R.layout.fragment_post_add) {
             map["theme"] = etTheme.text.toString()
             map["text"] = etText.text.toString()
             map["userId"] = mAuth.currentUser?.uid!!
-            map["username"] = etUsername2.text.toString()
+            map["username"] = username
             map["like"] = 0
             map["dislike"] = 0
             map["comments"] = arrayListOf<String>()
@@ -44,7 +46,7 @@ class AddPostFragment: Fragment(R.layout.fragment_post_add) {
     private fun showData() {
         db.collection("users").document(mAuth.currentUser!!.uid).get()
                 .addOnSuccessListener {
-                    etUsername2.setText(it.get("username").toString())
+                    username = it.get("username").toString()
                 }
     }
 

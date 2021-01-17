@@ -9,4 +9,4 @@ data class Post (
     var username: String = "",
     var userId: String = "",
     var comments: MutableList<Map<String, String>> = mutableListOf()
-        )
+)
