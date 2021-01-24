@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialNetwork">
-        <activity android:name=".ui.comments.CommentsActivity"></activity>
+        <activity android:name=".ui.comments.add.AddCommentActivity"></activity>
+        <activity android:name=".ui.comments.CommentsActivity" />
         <activity android:name=".ui.sign.RegisterActivity" />
         <activity android:name=".ui.sign.LoginActivity">
             <intent-filter>

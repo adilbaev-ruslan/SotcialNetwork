@@ -17,4 +17,6 @@
     <string name="text">Text...</string>
     <string name="username">Username</string>
     <string name="no_body">NO BODY</string>
+    <string name="send">send</string>
+    <string name="yor_comment">Yor comment</string>
 </resources>

@@ -47,7 +47,6 @@ class GetPostFragment: Fragment(R.layout.fragment_post_get) {
                             result.add(model)
                         }
                         postAdapter.models = result
-                        Log.d("maglumat", result.toString())
                     }
             }
         }
