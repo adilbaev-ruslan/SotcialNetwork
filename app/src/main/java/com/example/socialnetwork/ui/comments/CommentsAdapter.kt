@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialnetwork.R
+import kotlinx.android.synthetic.main.activity_comments.view.*
 import kotlinx.android.synthetic.main.comment_item.view.*
 
 class CommentsAdapter: RecyclerView.Adapter<CommentsAdapter.CommentsViewHolder>() {
